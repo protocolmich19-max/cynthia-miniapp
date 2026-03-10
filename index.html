@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Cynthia AI</title>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+<style>
+
+body{
+background:#0f0f0f;
+color:white;
+font-family:Arial;
+text-align:center;
+padding:20px;
+}
+
+textarea{
+width:90%;
+height:100px;
+margin-bottom:20px;
+}
+
+button{
+padding:12px 25px;
+border:none;
+background:#6c5ce7;
+color:white;
+font-size:16px;
+border-radius:8px;
+}
+
+img{
+margin-top:20px;
+width:90%;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>✨ Cynthia AI</h1>
+
+<textarea id="prompt" placeholder="Describe image..."></textarea>
+
+<br>
+
+<button onclick="generateImage()">Generate</button>
+
+<div id="result"></div>
+
+<script>
+
+const tg = window.Telegram.WebApp
+
+tg.expand()
+
+function generateImage(){
+
+const prompt = document.getElementById("prompt").value
+
+if(!prompt){
+alert("Enter prompt")
+return
+}
+
+const url =
+`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}`
+
+document.getElementById("result").innerHTML =
+`<img src="${url}">`
+
+}
+
+</script>
+
+</body>
+</html>
